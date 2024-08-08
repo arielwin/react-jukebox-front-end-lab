@@ -4,6 +4,8 @@ import Home from './components/Home/Home'
 import NavBar from './components/NavBar/NavBar';
 import TrackList from './components/TrackList/TrackList';
 import { useState } from 'react'
+import NowPlaying from './components/NowPlaying/NowPlaying'
+
 
 const App = () => {
   const[tracks, setTracks] = useState([])
@@ -12,12 +14,14 @@ const App = () => {
   //const handleEdittrack
   //const handleDeleteTrack
   //const handleSaveTrack
-
+  const handlePlay = (track) => {
+    setCurrentTrack(track);
+  };
   return (
     <>
       <NavBar />
-      <TrackList tracks={tracks}/>
-      
+      <TrackList tracks={tracks} onPlay={handlePlay}/>
+      <NowPlaying track={currentTrack} />
     </>
   )
 };
