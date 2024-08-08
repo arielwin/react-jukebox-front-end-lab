@@ -9,14 +9,19 @@ const App = () => {
   const[tracks, setTracks] = useState([])
 
   //const handlePlayTrack
+  //const handleAddTrack
   //const handleEdittrack
   //const handleDeleteTrack
   //const handleSaveTrack
 
   return (
     <>
+    <div>
       <NavBar />
-      <TrackList tracks={tracks}/>
+    </div>
+    <div>
+      <TrackList path='/tracks/track-list' element={<TrackList tracks={tracks} /> } />
+    </div>
       
     </>
   )
