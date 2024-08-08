@@ -1,7 +1,7 @@
 // src/App.jsx
 
 const App = () => {
-  const[tracks, setTracks] = useState([])
+  
 
   //const handlePlayTrack
   //const handleEdittrack
