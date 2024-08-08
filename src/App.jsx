@@ -5,11 +5,13 @@ import NavBar from './components/NavBar/NavBar';
 import TrackList from './components/TrackList/TrackList';
 import { useState } from 'react'
 import NowPlaying from './components/NowPlaying/NowPlaying'
-import { Navigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import TrackDetails from './components/TrackDetails/TrackDetails'
 
 
 const App = () => {
   const[tracks, setTracks] = useState([])
+  const navigate = useNavigate()
 
   //const handleAddTrack
   //const handleEdittrack
@@ -21,7 +23,7 @@ const App = () => {
 
   const handleDeleteTrack = async (trackId) => {
     setTracks(tracks.filter((track) => track._id !== trackId))
-    navigate('/')
+    navigate('/tracks')
   }
 
   return (
@@ -30,9 +32,9 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/tracks' tracks={<TrackList tracks={tracks} /> }/>
-        <Route path='/tracks:trackId' element={<TrackDetails handleDeleteTrack={handleDeleteTrack} />} />'
-        <TrackList tracks={tracks} onPlay={handlePlay}/>
-        <NowPlaying track={currentTrack} />
+        <Route path='/add-track' tracks={<TrackForm tracks={tracks} /> } />
+        <Route path='/edit-track' tracks={<TrackForm tracks={tracks} /> } />
+        <Route path='/tracks:trackId' element={<TrackDetails handleDeleteTrack={handleDeleteTrack} />} />
       </Routes>
 
 
