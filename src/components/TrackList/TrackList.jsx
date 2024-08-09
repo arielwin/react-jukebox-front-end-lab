@@ -2,8 +2,8 @@ import React from 'react';
 import './TrackList.css';
 import { Link } from 'react-router-dom';
 
-const TrackList = ({ tracks, onPlay, onEdit }) => {
-    const [tracks, setTracks] = useState([]);
+const TrackList = ({ tracks, onPlay, onEdit, handleDeleteTrack }) => {
+  const [tracks, setTracks] = useState([]);
     useEffect(() => {
         const fetchTracks = async () => {
             const data = await getTracks();
@@ -11,7 +11,6 @@ const TrackList = ({ tracks, onPlay, onEdit }) => {
         };
         fetchTracks();
         }, []);
-    
   return (
     <ul>
       {tracks.map((track) => (
@@ -22,11 +21,11 @@ const TrackList = ({ tracks, onPlay, onEdit }) => {
           </p>
           <button onClick={() => onPlay(track)}>Play</button>
           <button onClick={() => onEdit(track)}>Edit</button>
-          <button onClick={() => onDelete(track)}>Delete</button>
+          <button onClick={() => handleDeleteTrack(track)}>Delete</button>
         </li>
       ))}
     </ul>
-  ); 
+  );
 };
 
 export default TrackList;
