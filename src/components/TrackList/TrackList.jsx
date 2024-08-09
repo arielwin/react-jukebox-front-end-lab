@@ -3,6 +3,14 @@ import './TrackList.css';
 import { Link } from 'react-router-dom';
 
 const TrackList = ({ tracks, onPlay, onEdit, handleDeleteTrack }) => {
+  const [tracks, setTracks] = useState([]);
+    useEffect(() => {
+        const fetchTracks = async () => {
+            const data = await getTracks();
+            setTracks(data);
+        };
+        fetchTracks();
+        }, []);
   return (
     <ul>
       {tracks.map((track) => (
