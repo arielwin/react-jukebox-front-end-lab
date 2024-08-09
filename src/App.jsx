@@ -14,10 +14,6 @@ const App = () => {
   const navigate = useNavigate()
   const [currentTrack, setCurrentTrack] = useState(null)
 
-  //const handleAddTrack
-  //const handleEdittrack
-  //const handleSaveTrack
-
   const handleAddTrack = (newTrack) => {
     setTracks([...tracks, newTrack])
     navigate('/tracks')
